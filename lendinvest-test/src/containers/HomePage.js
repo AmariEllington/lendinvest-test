@@ -6,11 +6,14 @@ export default class HomePage extends Component {
   state = {
     data: Data.loans
   };
+
   render() {
-    console.log(this.state.data);
+    const { data } = this.state;
     return (
       <div>
-        <Loans />
+        {data.map(data => (
+          <Loans data={data} key={data.id} />
+        ))}
       </div>
     );
   }
