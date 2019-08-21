@@ -4,7 +4,7 @@ import Modal from "../components/Modal";
 export default class Loans extends Component {
   state = {
     modalShowing: false,
-    amount: this.props.data.amount
+    amount: parseFloat(this.props.data.amount.replace(/,/g, ""))
   };
 
   toggleModal = () => {
@@ -17,8 +17,9 @@ export default class Loans extends Component {
   onSubmit = event => {
     event.preventDefault();
     this.setState({
-      amount: this.state.amount + 1
+      amount: parseInt(this.state.amount) + parseInt(event.target.input.value)
     });
+    console.log(event.target.input.value);
   };
 
   render() {
@@ -37,7 +38,7 @@ export default class Loans extends Component {
     return (
       <div>
         <div>
-          Title: {title}, Tranche: {tranche}, Available:{available},
+          Title: {title}, Tranche: {tranche}, Available:{this.state.amount},
           Annualised_return: {annualised_return}, Term_remaining:
           {term_remaining}, LTV: {ltv}, Amount:{amount}
         </div>

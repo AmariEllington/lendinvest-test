@@ -4,8 +4,14 @@ import Loans from "../components/Loans";
 
 export default class HomePage extends Component {
   state = {
-    data: Data.loans
+    data: []
   };
+
+  componentDidMount() {
+    this.setState({
+      data: Data.loans
+    });
+  }
 
   render() {
     const { data } = this.state;

@@ -18,10 +18,10 @@ export default class Modal extends Component {
         Invest In Loan: {title}
         Amount Available: {available}
         Loan Ends In: {term_remaining}
-        <form>
+        <form onSubmit={this.props.onSubmit}>
           <label> Investment Amount: (£)</label>
           <input type="number" name="input" />
-          <input type="submit" name="inviest" onSubmit={this.props.onSubmit} />
+          <input type="submit" name="invest" />
         </form>
       </div>
     );
