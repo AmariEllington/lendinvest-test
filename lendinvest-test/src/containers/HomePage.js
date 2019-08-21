@@ -1,9 +1,17 @@
 import React, { Component } from "react";
-import Data from "./data/current-loans";
+import Data from "../data/current-loans";
+import Loans from "../components/Loans";
 
 export default class HomePage extends Component {
-  state = {};
+  state = {
+    data: Data.loans
+  };
   render() {
-    return <div>Hello</div>;
+    console.log(this.state.data);
+    return (
+      <div>
+        <Loans />
+      </div>
+    );
   }
 }
