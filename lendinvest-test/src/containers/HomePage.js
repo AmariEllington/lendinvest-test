@@ -9,11 +9,6 @@ export default class HomePage extends Component {
   };
 
   componentDidMount() {
-    // const change = data.map(data => parseInt(data.amount.replace(/,/g, "")));
-    // let sum = change.reduce((change, val) => {
-    //   return change + val;
-    // }, 0);
-    // let final = sum / change.length;
     this.setState({
       data: Data.loans,
       investmentAmount: parseFloat(Data.loans[0].amount.replace(/,/g, ""))
@@ -26,15 +21,11 @@ export default class HomePage extends Component {
     this.setState({
       investmentAmount: decreasedInvestmentAmount
     });
-    console.log(this.state.investmentAmount);
   };
 
   render() {
     const { data, investmentAmount } = this.state;
 
-    //// clean up ///////////
-
-    //////// clean up ////////////
     return (
       <div className="homePage">
         <div className="title">Current Loans</div>

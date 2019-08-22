@@ -5,7 +5,8 @@ import Modal from "react-responsive-modal";
 export default class Loans extends Component {
   state = {
     modalShowing: false,
-    stateAvailable: parseFloat(this.props.data.available.replace(/,/g, ""))
+    stateAvailable: parseFloat(this.props.data.available.replace(/,/g, "")),
+    invested: false
   };
 
   onOpenModal = () => {
@@ -20,7 +21,9 @@ export default class Loans extends Component {
     event.preventDefault();
     this.setState({
       stateAvailable:
-        parseInt(this.state.stateAvailable) - parseInt(event.target.input.value)
+        parseInt(this.state.stateAvailable) -
+        parseInt(event.target.input.value),
+      invested: true
     });
     this.props.decreaseAmountForInvestment(event);
   };
@@ -31,18 +34,9 @@ export default class Loans extends Component {
   };
 
   render() {
-    const {
-      title,
-      tranche,
-      available,
-      annualised_return,
-      term_remaining,
-      ltv,
-      amount,
-      id
-    } = this.props.data;
+    const { title, tranche, annualised_return, ltv } = this.props.data;
+    const { modalShowing, stateAvailable, invested } = this.state;
 
-    const { modalShowing, stateAvailable } = this.state;
     return (
       <div className="loanCard">
         <div className="loanInformation">
@@ -55,6 +49,11 @@ export default class Loans extends Component {
             <li />
           </ul>
         </div>
+        {invested === true ? (
+          <div className="investedAlert">INVESTED</div>
+        ) : (
+          <div />
+        )}
         <button onClick={this.onOpenModal} className="investButton">
           INVEST
         </button>

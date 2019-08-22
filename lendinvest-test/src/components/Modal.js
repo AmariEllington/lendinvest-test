@@ -2,7 +2,7 @@ import React, { Component } from "react";
 const prettyMilliseconds = require("pretty-ms");
 export default class Modal extends Component {
   render() {
-    const { title, available, term_remaining } = this.props.data;
+    const { title, term_remaining } = this.props.data;
     const { stateAvailable } = this.props;
 
     const termRemainingToInteger = parseInt(term_remaining);
@@ -23,8 +23,10 @@ export default class Modal extends Component {
           <label> Investment Amount: (£)</label>
           <br />
           <br />
-          <input type="number" name="input" />
-          <input type="submit" name="invest" className="modalInvestButton" />
+          <input type="number" name="input" className="modalInput" />
+          <button type="submit" name="invest" className="modalInvestButton">
+            INVEST
+          </button>
         </form>
       </div>
     );
