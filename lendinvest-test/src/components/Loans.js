@@ -17,9 +17,13 @@ export default class Loans extends Component {
   onSubmit = event => {
     event.preventDefault();
     this.setState({
-      amount: parseInt(this.state.amount) + parseInt(event.target.input.value)
+      amount: parseInt(this.state.amount) - parseInt(event.target.input.value)
     });
-    console.log(event.target.input.value);
+  };
+
+  userInvest = event => {
+    this.toggleModal();
+    this.onSubmit(event);
   };
 
   render() {
@@ -36,15 +40,21 @@ export default class Loans extends Component {
 
     const { modalShowing } = this.state;
     return (
-      <div>
-        <div>
-          Title: {title}, Tranche: {tranche}, Available:{this.state.amount},
-          Annualised_return: {annualised_return}, Term_remaining:
-          {term_remaining}, LTV: {ltv}, Amount:{amount}
+      <div className="loanCard">
+        <div className="loanInformation">
+          <h2>{title}</h2>
+          <ul>
+            <li>Tranche: {tranche}</li>
+            <li>Available: {this.state.amount}</li>
+            <li>Annualised Return: {annualised_return}</li>
+            <li>Term remaining: {term_remaining}</li>
+            <li>LTV: {ltv}</li>
+            <li>Amount: {amount}</li>
+          </ul>
         </div>
         <button onClick={this.toggleModal}>INVEST</button>
         {modalShowing === true ? (
-          <Modal data={this.props.data} onSubmit={this.onSubmit} />
+          <Modal data={this.props.data} onSubmit={this.userInvest} />
         ) : (
           <div />
         )}

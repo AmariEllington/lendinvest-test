@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+const prettyMilliseconds = require("pretty-ms");
 export default class Modal extends Component {
   render() {
     const {
@@ -13,11 +13,13 @@ export default class Modal extends Component {
       id
     } = this.props.data;
 
+    const termRemainingToInteger = parseInt(term_remaining);
     return (
       <div>
         Invest In Loan: {title}
         Amount Available: {available}
-        Loan Ends In: {term_remaining}
+        Loan Ends In:{" "}
+        {prettyMilliseconds(termRemainingToInteger, { verbose: true })}
         <form onSubmit={this.props.onSubmit}>
           <label> Investment Amount: (£)</label>
           <input type="number" name="input" />
