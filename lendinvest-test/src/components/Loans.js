@@ -22,7 +22,7 @@ export default class Loans extends Component {
       stateAvailable:
         parseInt(this.state.stateAvailable) - parseInt(event.target.input.value)
     });
-    console.log(event.target.input.value);
+    this.props.decreaseAmountForInvestment(event);
   };
 
   userInvest = event => {
