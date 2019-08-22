@@ -13,7 +13,7 @@ export default class Modal extends Component {
         {title}
         <br />
         <br />
-        Amount Available: {stateAvailable}
+        Amount Available: £{stateAvailable}
         <br />
         Loan Ends In:{" "}
         {prettyMilliseconds(termRemainingToInteger, { verbose: true })}

@@ -49,7 +49,7 @@ export default class Loans extends Component {
           <h2>{title}</h2>
           <ul>
             <li>Tranche: {tranche}</li>
-            <li>Available: {stateAvailable}</li>
+            <li>Available: £{stateAvailable}</li>
             <li>Annualised Return: {annualised_return}</li>
             <li>LTV: {ltv}</li>
             <li />

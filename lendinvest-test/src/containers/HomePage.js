@@ -16,16 +16,17 @@ export default class HomePage extends Component {
     // let final = sum / change.length;
     this.setState({
       data: Data.loans,
-      investmentAmount: Data.amount
+      investmentAmount: parseFloat(Data.loans[0].amount.replace(/,/g, ""))
     });
   }
 
-  decreaseAmountForInvestment = (event, data) => {
+  decreaseAmountForInvestment = event => {
     const decreasedInvestmentAmount =
       this.state.investmentAmount - event.target.input.value;
     this.setState({
       investmentAmount: decreasedInvestmentAmount
     });
+    console.log(this.state.investmentAmount);
   };
 
   render() {
@@ -38,7 +39,7 @@ export default class HomePage extends Component {
       <div className="homePage">
         <div className="title">Current Loans</div>
         <div className="totalAmount">
-          Total Amount Available For Investment: {investmentAmount}
+          Total Amount Available For Investment: £{investmentAmount}
         </div>
         <div className="DisplayLoans">
           {data.map(data => (
